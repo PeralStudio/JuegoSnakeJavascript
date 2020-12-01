@@ -65,7 +65,7 @@ let DIRECCIONES = {
     context.fillText(texto, x, y);
   }
   
-  /** Snake **/
+  /** Culebra **/
   
   function moverCulebra(direccion, culebra) {
     let cabezaPosX = culebra[0].posX;
