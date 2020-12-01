@@ -18,7 +18,8 @@ let DIRECCIONES = {
   let TITULO = document.getElementById("titulo");
   let BOTON_CERRAR_BANNER = document.getElementById("botonCerrarBanner");
   
-  let SONIDO_GANASTE_PUNTO = new Audio("ganaste_un_punto.wav");
+  let SONIDO_GANASTE_PUNTO = new Audio("/assets/sounds/coin.wav");
+  let SONIDO_PERDISTE = new Audio("/assets/sounds/perdiste.mp3");
   
   let CSS_CLASE_SACUDIR_HORIZONTALMENTE = "shake-horizontal";
   let CSS_CLASE_ESCONDER = "esconder";
@@ -129,6 +130,7 @@ let DIRECCIONES = {
       cabeza.posX >= 580 ||
       cabeza.posY >= 580
     ) {
+      SONIDO_PERDISTE.play();
       return true;
     }
   
@@ -138,6 +140,7 @@ let DIRECCIONES = {
   
     for (let i = 1; i < culebra.length; i++) {
       if (cabeza.posX === culebra[i].posX && cabeza.posY === culebra[i].posY) {
+        SONIDO_PERDISTE.play();
         return true;
       }
     }
@@ -215,6 +218,7 @@ let DIRECCIONES = {
     ciclo = undefined;
     CTX.clearRect(0, 0, 600, 600);
     dibujarTexto(CTX, "¡Fin del Juego!", 300, 260);
+    dibujarTexto(CTX, "Puntuación: " + puntos, 300, 160);
     dibujarTexto(CTX, "Click para volver a jugar", 300, 310);
     CONTENEDOR_NINTENDO.classList.add(CSS_CLASE_SACUDIR_HORIZONTALMENTE);
   }
@@ -249,7 +253,7 @@ let DIRECCIONES = {
       empezarJuego();
       return;
     }
-  
+
     if (direccionActual === DIRECCIONES.ABAJO) {
       nuevaDireccion = DIRECCIONES.IZQUIERDA;
     } else if (direccionActual === DIRECCIONES.IZQUIERDA) {
