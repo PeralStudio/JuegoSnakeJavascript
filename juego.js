@@ -219,7 +219,7 @@ let DIRECCIONES = {
     CTX.clearRect(0, 0, 600, 600);
     dibujarTexto(CTX, "¡Fin del Juego!", 300, 260);
     dibujarTexto(CTX, "Puntuación: " + puntos, 300, 160);
-    dibujarTexto(CTX, "Click para volver a jugar", 300, 310);
+    dibujarTexto(CTX, "Pulsa una tecla para empezar", 300, 310);
     CONTENEDOR_NINTENDO.classList.add(CSS_CLASE_SACUDIR_HORIZONTALMENTE);
   }
   
@@ -244,7 +244,7 @@ let DIRECCIONES = {
   }
   
   dibujarParedes(CTX);
-  dibujarTexto(CTX, "¡Click para empezar!", 300, 260) , "300px Arial";
+  dibujarTexto(CTX, "¡Pulsa una tecla para empezar!", 300, 260) , "300px Arial";
   dibujarTexto(CTX, "PC: Muévete con ↑ ↓ → ←", 300, 310);
   dibujarTexto(CTX, "Móbil: Tap para girar la serpiente", 300, 360);
   
@@ -264,3 +264,11 @@ let DIRECCIONES = {
       nuevaDireccion = DIRECCIONES.ABAJO;
     }
   });
+
+  window.addEventListener("keydown", function (event) {
+    
+      if (ciclo === undefined) {
+      empezarJuego();
+      return;
+    }
+    })
