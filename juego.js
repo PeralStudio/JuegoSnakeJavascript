@@ -265,9 +265,23 @@ JUEGO_CANVAS.addEventListener("click", function () {
   }
 });
 
+/* Opcion para iniciar juego presionando cualquier tecla */
+
 window.addEventListener("keydown", function () {
   if (ciclo === undefined) {
     empezarJuego();
     return;
   }
 });
+
+/* Opcion para iniciar juego pulsando una tecla en concreto */
+
+/* function presionar_tecla() {
+    console.log(event.which);
+    if (13 == event.which && ciclo === undefined) {
+      empezarJuego();
+      return;
+    }
+  }
+
+  window.onkeydown = presionar_tecla; */
