@@ -72,15 +72,21 @@ function moverCulebra(direccion, culebra) {
   let cabezaPosX = culebra[0].posX;
   let cabezaPosY = culebra[0].posY;
 
-  if (direccion === DIRECCIONES.DERECHA) {
-    cabezaPosX += 20;
-  } else if (direccion === DIRECCIONES.IZQUIERDA) {
-    cabezaPosX -= 20;
-  } else if (direccion === DIRECCIONES.ABAJO) {
-    cabezaPosY += 20;
-  } else if (direccion === DIRECCIONES.ARRIBA) {
-    cabezaPosY -= 20;
+  switch (direccion) {
+    case DIRECCIONES.ARRIBA:
+      cabezaPosY -= 20;
+      break;
+    case DIRECCIONES.DERECHA:
+      cabezaPosX += 20;
+      break;
+    case DIRECCIONES.ABAJO:
+      cabezaPosY += 20;
+      break;
+    case DIRECCIONES.IZQUIERDA:
+      cabezaPosX -= 20;
+      break;
   }
+
 
   // Agregamos la nueva cabeza al principio de la lista
   culebra.unshift({ posX: cabezaPosX, posY: cabezaPosY });
@@ -254,14 +260,19 @@ JUEGO_CANVAS.addEventListener("click", function () {
     return;
   }
 
-  if (direccionActual === DIRECCIONES.ABAJO) {
-    nuevaDireccion = DIRECCIONES.IZQUIERDA;
-  } else if (direccionActual === DIRECCIONES.IZQUIERDA) {
-    nuevaDireccion = DIRECCIONES.ARRIBA;
-  } else if (direccionActual === DIRECCIONES.ARRIBA) {
-    nuevaDireccion = DIRECCIONES.DERECHA;
-  } else if (direccionActual === DIRECCIONES.DERECHA) {
-    nuevaDireccion = DIRECCIONES.ABAJO;
+  switch (direccionActual) {
+    case DIRECCIONES.ARRIBA:
+      nuevaDireccion = DIRECCIONES.DERECHA;
+      break;
+    case DIRECCIONES.DERECHA:
+      nuevaDireccion = DIRECCIONES.ABAJO;
+      break;
+    case DIRECCIONES.ABAJO:
+      nuevaDireccion = DIRECCIONES.IZQUIERDA;
+      break;
+    case DIRECCIONES.IZQUIERDA:
+      nuevaDireccion = DIRECCIONES.ARRIBA;
+      break;
   }
 });
 
